@@ -1,0 +1,55 @@
+-------------------------------------------------------------------------------
+Test set: com.example.rak.service.UserServiceTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 2, Skipped: 0, Time elapsed: 0.475 s <<< FAILURE! -- in com.example.rak.service.UserServiceTest
+com.example.rak.service.UserServiceTest.testChangePassword_Success -- Time elapsed: 0.191 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.crypto.password.PasswordEncoder.encode(java.lang.CharSequence)" because "this.passwordEncoder" is null
+	at com.example.rak.services.UsersService.lambda$updateUserPassword$1(UsersService.java:44)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at com.example.rak.services.UsersService.updateUserPassword(UsersService.java:43)
+	at com.example.rak.service.UserServiceTest.testChangePassword_Success(UserServiceTest.java:65)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.example.rak.service.UserServiceTest.testChangePassword_Failure -- Time elapsed: 0.074 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at com.example.rak.service.UserServiceTest.testChangePassword_Failure(UserServiceTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.NullPointerException: Cannot invoke "org.springframework.security.crypto.password.PasswordEncoder.encode(java.lang.CharSequence)" because "this.passwordEncoder" is null
+	at com.example.rak.services.UsersService.lambda$updateUserPassword$1(UsersService.java:44)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at com.example.rak.services.UsersService.updateUserPassword(UsersService.java:43)
+	at com.example.rak.service.UserServiceTest.lambda$testChangePassword_Failure$0(UserServiceTest.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+com.example.rak.service.UserServiceTest.testCreateUser -- Time elapsed: 0.068 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.crypto.password.PasswordEncoder.encode(java.lang.CharSequence)" because "this.passwordEncoder" is null
+	at com.example.rak.services.UsersService.createUser(UsersService.java:30)
+	at com.example.rak.service.UserServiceTest.testCreateUser(UserServiceTest.java:42)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.example.rak.service.UserServiceTest.testDeleteUser -- Time elapsed: 0.072 s <<< FAILURE!
+Wanted but not invoked:
+userRepository.deleteById(1L);
+-> at com.example.rak.service.UserServiceTest.testDeleteUser(UserServiceTest.java:59)
+
+However, there was exactly 1 interaction with this mock:
+userRepository.findById(1L);
+-> at com.example.rak.services.UsersService.deleteUserById(UsersService.java:50)
+
+
+	at com.example.rak.service.UserServiceTest.testDeleteUser(UserServiceTest.java:59)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
