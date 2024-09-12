@@ -10,35 +10,35 @@ Email: Mandatory, must be in a valid email format.
 Password: Mandatory, minimum length of 8 characters, should only contain alphabets and numbers.
 Swagger Documentation: Auto-generated based on the latest code.
 
-# Technologies Used
+### Technologies Used
 
 Spring Boot: For building the application.
 H2 Database: In-memory database for development and testing.
 Swagger: For API documentation.
 JUnit & Mockito: For unit testing.
 
-# Getting Started
+### Getting Started
 
-# Prerequisites
+### Prerequisites
 Java 17 or later
 Maven
 
 # Setup
-# Clone the Repository
+### Clone the Repository
 git clone https://github.com/sravansasi24/rak-backend-app.git
 
 cd your-repository
 
-# Build the Application
+### Build the Application
 mvn clean install
 
-# Run the Application
+### Run the Application
 mvn spring-boot:run
 
-# ccess the Swagger UI
+### ccess the Swagger UI
 Navigate to http://localhost:8080/swagger-ui.html to interact with the API documentation.
 
-# Image
+### Image
 
 ![image](https://github.com/user-attachments/assets/2cdd1d85-2762-4dd9-ba97-dca8c4305c1f)
 
