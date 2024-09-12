@@ -23,8 +23,11 @@ class UserServiceTest {
     @InjectMocks
     private UsersService userService;
 
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private Users user;
+
+    @Mock
+    private BCryptPasswordEncoder passwordEncoder; // Mock the password encoder
+
 
     @BeforeEach
     void setUp() {
@@ -33,7 +36,7 @@ class UserServiceTest {
         user.setId(1L);
         user.setName("John Doe");
         user.setEmail("john@example.com");
-        user.setPassword(passwordEncoder.encode("password123"));
+        user.setPassword("password123");
     }
 
     @Test
@@ -42,6 +45,7 @@ class UserServiceTest {
         Users createdUser = userService.createUser(user);
         assertNotNull(createdUser);
         assertEquals(user.getId(), createdUser.getId());
+        verify(passwordEncoder).encode(anyString());
     }
 
     @Test
@@ -61,9 +65,14 @@ class UserServiceTest {
 
     @Test
     void testChangePassword_Success() {
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));  // Find the user
+        when(passwordEncoder.encode("newPassword123")).thenReturn("encodedNewPassword");  // Mock the encoding
+        when(userRepository.save(any(Users.class))).thenReturn(user);  // Mock the user save after password change
+
         Optional<Users> isChanged = userService.updateUserPassword(1L, "newPassword123");
-        assertTrue(isChanged.isPresent());
+
+        assertTrue(isChanged.isPresent());  // Ensure the user was returned after the update
+        verify(userRepository, times(1)).save(any(Users.class));  // Verify that save was called
     }
 
     @Test
@@ -73,4 +82,5 @@ class UserServiceTest {
             userService.updateUserPassword(1L,  "newPassword123");
         });
     }
+
 }

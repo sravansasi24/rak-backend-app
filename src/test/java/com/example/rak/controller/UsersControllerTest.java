@@ -69,12 +69,14 @@ class UsersControllerTest {
 
     @Test
     void testDeleteUser() {
-        doNothing().when(userService).deleteUserById(1L);
+        // Adjust this based on the actual return type of deleteUserById
+        when(userService.deleteUserById(1L)).thenReturn(true);
 
         ResponseEntity<Void> response = userController.deleteUser(1L);
 
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
     }
+
 
     @Test
     void testChangePassword_Success() {
